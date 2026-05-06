@@ -1,29 +1,19 @@
-# MEDS Summer Training 2026
+## 📘 Documentation
 
-This repository documents my work and progress during the **MEDS Summer Training 2026**.
+The `docs/` folder contains structured lecture notes covering:
 
-The focus of this training is to build a strong understanding of hardware systems, starting from basic concepts and moving towards processor-level design, with particular emphasis on the RISC-V architecture.
+- Digital logic fundamentals  
+- Combinational and sequential circuits  
+- FSM design and implementation  
+- Verilog coding practices  
+- Timing analysis and verification concepts  
 
-# About Me
+## Objective
 
-**Abdurrehman Muzaffar**
-BS Computer Engineering, Ghulam Ishaq Khan Institute (GIKI)
+The purpose of this repository is to document consistent learning progress in hardware design and computer architecture.  
+It serves as both a reference and a development log for understanding how processors are designed and implemented at the hardware level.
 
-I am currently developing my interest in hardware and low-level system design. I like exploring how things actually work under the hood — from instruction execution to datapath design and processor implementation.
+## Note
 
-My main areas of interest include:
-
-* Digital Logic Design
-* Computer Architecture
-* Processor Design
-* RISC-V Systems
-* Verilog (HDL)
-
-# 📂 Repository Structure
-
-* `src/` → Verilog modules
-* `tb/` → Testbenches
-* `docs/` → Notes and diagrams
-* `sim/` → Simulation files and outputs
-
-This repository mainly reflects my learning process, so some parts may evolve as I continue improving my understanding.
+This repository is continuously updated as part of ongoing training.  
+Content will evolve as concepts become more advanced and implementations improve.
