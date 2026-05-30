@@ -1,23 +1,50 @@
 #!/bin/bash
 
-LOGFILE=$1
+set -euo pipefail
 
-if [ -z "$LOGFILE" ]; then
+show_help() {
     echo "Usage: $0 <logfile>"
+    echo "Example: $0 test_data/sample_fail.log"
+}
+
+if [ $# -lt 1 ]; then
+    show_help
     exit 1
 fi
+
+LOGFILE="$1"
 
 if [ ! -f "$LOGFILE" ]; then
-    echo "File not found: $LOGFILE"
+    echo "Error: File not found"
     exit 1
 fi
 
-PASS_COUNT=$(grep -c "PASS" "$LOGFILE")
-FAIL_COUNT=$(grep -c "FAIL" "$LOGFILE")
-ERROR_COUNT=$(grep -c "ERROR" "$LOGFILE")
+PASS_COUNT=$(grep -c "TEST PASS" "$LOGFILE" || true)
+FAIL_COUNT=$(grep -c "TEST FAIL" "$LOGFILE" || true)
+SKIP_COUNT=$(grep -c "TEST SKIP" "$LOGFILE" || true)
 
-echo "===== Log Analysis ====="
+TOTAL=$((PASS_COUNT + FAIL_COUNT + SKIP_COUNT))
+
+if [ "$TOTAL" -gt 0 ]; then
+    PASS_RATE=$(awk "BEGIN {printf \"%.2f\", ($PASS_COUNT/$TOTAL)*100}")
+else
+    PASS_RATE=0
+fi
+
+echo "===== RISC-V Log Analysis ====="
 echo "File: $LOGFILE"
-echo "PASS entries : $PASS_COUNT"
-echo "FAIL entries : $FAIL_COUNT"
-echo "ERROR entries: $ERROR_COUNT"
+echo "Total Tests : $TOTAL"
+echo "Passed      : $PASS_COUNT"
+echo "Failed      : $FAIL_COUNT"
+echo "Skipped     : $SKIP_COUNT"
+echo "Pass Rate   : $PASS_RATE %"
+
+echo
+echo "Failed Tests:"
+grep "TEST FAIL" "$LOGFILE" | awk -F': ' '{print $2}' | awk '{print $1}' || true
+
+if [ "$FAIL_COUNT" -gt 0 ]; then
+    exit 1
+else
+    exit 0
+fi
