@@ -1,0 +1,9 @@
+```text
+[INFO] Simulation started
+[INFO] Loading RISC-V instructions
+[WARNING] Cache miss detected
+[INFO] Executing instruction ADDI
+[INFO] Executing instruction LW
+[ERROR] Memory access violation
+[INFO] Simulation ended
+```
