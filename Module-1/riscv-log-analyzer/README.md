@@ -1,2 +1,20 @@
-Project created for MEDS Summer Training 2026.
-Version from branch A and Branch B
+## Installation
+
+Clone the repository:
+
+git clone <repository-url>
+
+Move into project directory:
+
+cd riscv-log-analyzer
+
+## Features
+
+- Log Analysis
+- Report Generation
+- Environment Verification
+- Sample Test Logs
+
+## Documentation
+
+See docs/USAGE.md for detailed usage instructions.s
