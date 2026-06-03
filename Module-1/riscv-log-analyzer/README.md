@@ -2,11 +2,11 @@
 
 Clone the repository:
 
-git clone <repository-url>
+git clone https://github.com/abdurrehman-muzaffar/MEDS-Summer-Training-2026.git
 
 Move into project directory:
 
-cd riscv-log-analyzer
+cd MEDS-Summer-Training-2026/Module-1/riscv-log-analyzer
 
 ## Features
 

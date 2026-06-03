@@ -19,9 +19,9 @@ if [ ! -f "$LOGFILE" ]; then
     exit 1
 fi
 
-PASS_COUNT=$(grep -c "TEST PASS" "$LOGFILE" || true)
-FAIL_COUNT=$(grep -c "TEST FAIL" "$LOGFILE" || true)
-SKIP_COUNT=$(grep -c "TEST SKIP" "$LOGFILE" || true)
+PASS_COUNT=$(grep -c "\[PASS\]" "$LOGFILE" || true)
+FAIL_COUNT=$(grep -c "\[FAIL\]" "$LOGFILE" || true)
+SKIP_COUNT=$(grep -c "\[SKIP\]" "$LOGFILE" || true)
 
 TOTAL=$((PASS_COUNT + FAIL_COUNT + SKIP_COUNT))
 

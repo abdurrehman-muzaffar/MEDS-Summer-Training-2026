@@ -1,28 +1,25 @@
 .PHONY: all test report clean help setup
 
 all:
-	@echo "Running analyzer on all logs..."
+	bash scripts/analyze.sh test_data/sample_pass.log
 
 test:
-	@echo "Testing sample logs..."
-	@echo "Tests completed"
+	bash scripts/analyze.sh test_data/sample_pass.log
+	bash scripts/analyze.sh test_data/sample_fail.log || true
 
 report:
-	@echo "Generating report..."
-	@bash scripts/generate_report.sh
-
-clean:
-	@echo "Cleaning output..."
-	@rm -rf output/*
+	bash scripts/generate_report.sh
 
 setup:
-	@bash scripts/setup_env.sh
+	bash scripts/setup_env.sh
+
+clean:
+	rm -rf output/*
 
 help:
-	@echo "Available targets:"
-	@echo "  all     - Run analyzer"
-	@echo "  test    - Run tests"
-	@echo "  report  - Generate report"
-	@echo "  clean   - Remove output files"
-	@echo "  setup   - Verify environment"
-	@echo "  help    - Show this help"
+	@echo "Targets:"
+	@echo "make all"
+	@echo "make test"
+	@echo "make report"
+	@echo "make setup"
+	@echo "make clean"

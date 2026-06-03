@@ -10,8 +10,9 @@ echo "" >> "$REPORT"
 
 for file in test_data/*.log
 do
-    echo "Processing $file" >> "$REPORT"
-    grep "SUMMARY" "$file" >> "$REPORT" || true
+    echo "==================================" >> "$REPORT"
+    echo "FILE: $file" >> "$REPORT"
+    bash scripts/analyze.sh "$file" >> "$REPORT" 2>&1 || true
     echo "" >> "$REPORT"
 done
 
